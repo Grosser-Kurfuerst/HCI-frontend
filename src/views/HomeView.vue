@@ -1,15 +1,27 @@
 <template>
     <div>
         <div class="box">🔔 {{ billboard.content }}</div>
+
+        <div class="columns">
+            <div class="column is-three-quarters">
+                <TopicList></TopicList>
+            </div>
+            <div class="column">
+                <CardBar></CardBar>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import {getBillboard} from '@/api/billboard'
+import TopicList from "@/views/post/Index.vue";
+import CardBar from "@/views/card/CardBar.vue";
 
 export default {
     name: 'HomeView',
+    components: {CardBar, TopicList},
     data() {
         return {
             billboard: {
