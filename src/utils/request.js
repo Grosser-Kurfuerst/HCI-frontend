@@ -39,7 +39,8 @@ service.interceptors.response.use(
                     duration: 3 * 1000
                 })
             }
-            return Promise.reject(new Error(res.message || 'Error'))
+            // return Promise.reject(new Error(res.message || 'Error'))
+            return res
         } else {
             return res
         }
