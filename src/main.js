@@ -16,4 +16,5 @@ import 'element-plus/theme-chalk/index.css'
 const app = createApp(App).use(store).use(router)
 app.use(ElementPlus)
 app.use(Bulma)
+app.use(store)
 app.mount('#app')

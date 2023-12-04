@@ -14,6 +14,12 @@ const routes = [
     meta: { title: '注册' }
   },
   {
+    name: 'login',
+    path: '/login',
+    component: () => import('@/views/auth/Login'),
+    meta: { title: '登录' }
+  },
+  {
     path: '/404',
     name: '404',
     component: () => import('@/views/error/404'),

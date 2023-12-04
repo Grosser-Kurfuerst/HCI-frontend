@@ -137,7 +137,7 @@ export default {
                                     router.push({ path: '/login' })
                                 }, 1000)
                             } else {
-                                proxy.$message.error("注册失败，" + message)
+                                // proxy.$message.error("注册失败，" + message)
                                 state.loading = false
                             }
                         })
