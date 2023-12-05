@@ -24,11 +24,12 @@
                                 type="password"
                                 v-model="ruleForm.pass"
                                 autocomplete="off"
+                                show-password
                             ></el-input>
                         </el-form-item>
 
                         <el-form-item label="记住" prop="delivery">
-                            <el-switch v-model="ruleForm.rememberMe"></el-switch>
+                            <el-checkbox v-model="ruleForm.rememberMe"></el-checkbox>
                         </el-form-item>
 
                         <el-form-item>

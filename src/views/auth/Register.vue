@@ -24,6 +24,7 @@
                                 v-model="ruleForm.pass"
                                 type="password"
                                 autocomplete="off"
+                                show-password
                             />
                         </el-form-item>
 
@@ -32,6 +33,7 @@
                                 v-model="ruleForm.checkPass"
                                 type="password"
                                 autocomplete="off"
+                                show-password
                             />
                         </el-form-item>
 
