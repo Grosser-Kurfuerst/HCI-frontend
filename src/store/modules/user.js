@@ -18,14 +18,13 @@ const mutations = {
 const actions = {
     // 用户登录
     login({ commit }, userInfo) {
-        console.log(userInfo);
         const { name, pass, rememberMe } = userInfo;
         return new Promise((resolve, reject) => {
             login({ username: name.trim(), password: pass, rememberMe: rememberMe })
                 .then((response) => {
                     const { data } = response;
-                    commit("SET_TOKEN_STATE", data.token);
-                    setToken(data.token);
+                    commit("SET_TOKEN_STATE", data);
+                    setToken(data);
                     resolve();
                 })
                 .catch((error) => {

@@ -87,13 +87,13 @@ const submitForm = () => {
                         duration: 2000,
                     });
 
-                    store.dispatch("user/getInfo")
+                    // store.dispatch("user/getInfo")
 
                     setTimeout(() => {
                         loading.value = false;
                         // 通过 router 跳转页面
                         router.push({ name: "home"});
-                    }, 1000);
+                    }, 500);
                 })
                 .catch(() => {
                     loading.value = false;
