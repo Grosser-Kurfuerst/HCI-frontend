@@ -34,8 +34,7 @@
 
                         <el-form-item>
                             <el-button type="primary" @click="submitForm()"
-                            >提交</el-button
-                            >
+                            >提交</el-button>
                             <el-button @click="resetForm()">重置</el-button>
                         </el-form-item>
                     </el-form>
@@ -49,6 +48,8 @@
 import {getCurrentInstance, ref} from "vue";
 import {useRouter} from "vue-router";
 import {useStore} from "vuex";
+
+
 const router = useRouter();
 const store = useStore();
 const { proxy } = getCurrentInstance();
@@ -73,6 +74,7 @@ const rules = {
 };
 
 const LoginForm = ref(null);
+
 const submitForm = () => {
     LoginForm.value.validate((valid) => {
         if (valid) {
@@ -84,10 +86,13 @@ const submitForm = () => {
                         type: "success",
                         duration: 2000,
                     });
+
+                    store.dispatch("user/getInfo")
+
                     setTimeout(() => {
                         loading.value = false;
                         // 通过 router 跳转页面
-                        router.push({ path: redirect.value || '/' });
+                        router.push({ name: "home"});
                     }, 1000);
                 })
                 .catch(() => {
