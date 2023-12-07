@@ -12,6 +12,8 @@ import 'bulma/css/bulma.css'
 import ElementPlus from 'element-plus'
 import 'element-plus/theme-chalk/index.css'
 
+// permission
+import '@/permission'
 
 const app = createApp(App).use(store).use(router)
 app.use(ElementPlus)

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="box">🔔 {{ billboard.content }}</div>
+        <div class="box">🔔 {{ state.billboard.content }}</div>
 
         <div class="columns">
             <div class="column is-three-quarters">
@@ -13,34 +13,23 @@
     </div>
 </template>
 
-<script>
-// @ is an alias to /src
-import {getBillboard} from '@/api/billboard'
-import TopicList from "@/views/post/Index.vue";
-import CardBar from "@/views/card/CardBar.vue";
+<script setup>
+import {reactive, watch} from 'vue'
+import { getBillboard } from '@/api/billboard'
+import TopicList from "@/views/post/Index.vue"
+import CardBar from "@/views/card/CardBar.vue"
+import {useRoute} from "vue-router";
 
-export default {
-    name: 'HomeView',
-    components: {CardBar, TopicList},
-    data() {
-        return {
-            billboard: {
-                content: ''
-            }
-        }
+const state = reactive({
+    billboard: {
+        content: ''
     },
+})
 
-    created() {
-        this.fetchBillboard()
-    },
-
-    methods: {
-        async fetchBillboard() {
-            getBillboard().then((value) => {
-                const {data} = value
-                this.billboard = data
-            })
-        }
-    },
+const fetchBillboard = async () => {
+    const { data } = await getBillboard()
+    state.billboard = data
 }
+
+fetchBillboard();
 </script>

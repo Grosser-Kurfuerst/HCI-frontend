@@ -1,11 +1,27 @@
 <template>
-    <div class="container">
-        <router-view/>
+    <div>
+        <div class="mb-5">
+            <Header></Header>
+        </div>
+
+        <div class="container context">
+            <router-view :key="route.fullPath"></router-view>
+        </div>
+
+        <div class="footer">
+            <Footer></Footer>
+        </div>
     </div>
 </template>
 
-<script>
+<script setup>
+import Header from "@/components/Layout/Header";
+import Footer from "@/components/Layout/Footer";
 
+import {useRoute} from "vue-router";
+
+
+const route = useRoute()
 </script>
 
 <style>
@@ -15,6 +31,14 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    margin-top: 60px;
+}
+
+
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 </style>
