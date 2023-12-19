@@ -126,8 +126,8 @@ export default {
                     state.loading = true
                     console.log(state.ruleForm)
                     userRegister(state.ruleForm)
-                        .then((value) => {
-                            const { code, message } = value
+                        .then((code) => {
+
                             if (code === 200) {
                                 proxy.$message({
                                     message: '账号注册成功',
