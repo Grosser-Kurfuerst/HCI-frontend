@@ -80,20 +80,28 @@ const submitForm = () => {
         if (valid) {
             loading.value = true;
             store.dispatch('user/login', ruleForm.value)
-                .then(() => {
-                    proxy.$message({
-                        message: "恭喜你，登录成功",
-                        type: "success",
-                        duration: 2000,
-                    });
+                .then((value) => {
+                    if (value === 200) {
+                        proxy.$message({
+                            message: "恭喜你，登录成功",
+                            type: "success",
+                            duration: 2000,
+                        });
+
+                        setTimeout(() => {
+                            loading.value = false;
+                            // 通过 router 跳转页面
+                            router.push({ name: "home"});
+                        }, 500);
+                    } else {
+                        loading.value = false;
+                        resetForm();
+                    }
+                    console.log(value);
 
                     // store.dispatch("user/getInfo")
 
-                    setTimeout(() => {
-                        loading.value = false;
-                        // 通过 router 跳转页面
-                        router.push({ name: "home"});
-                    }, 500);
+
                 })
                 .catch(() => {
                     loading.value = false;
