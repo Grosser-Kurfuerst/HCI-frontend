@@ -20,6 +20,10 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 // 国际化
 import 'dayjs/locale/zh-cn'
 
+//Font Awesome
+import 'font-awesome/css/font-awesome.min.css';
+
+
 const dayjs = require('dayjs');
 // 相对时间插件
 dayjs.extend(relativeTime)
