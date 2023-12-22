@@ -4,7 +4,7 @@
             <Header></Header>
         </div>
 
-        <div class="container context">
+        <div class="container context" style="margin-top: 80px">
             <router-view :key="route.fullPath"></router-view>
         </div>
 
@@ -37,7 +37,6 @@ const route = useRoute()
 
 .footer {
     position: absolute;
-    bottom: 0;
     left: 0;
     right: 0;
 }
