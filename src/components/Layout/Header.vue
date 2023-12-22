@@ -1,6 +1,6 @@
 <template>
     <el-header class="header has-background-white has-text-black">
-        <nav class="navbar-menu container is-white" role="navigation" aria-label="main navigation">
+        <nav class="navbar container is-white" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
                 <div class="navbar-item">
                     <img :src="state.IconImg" alt="logo">
@@ -10,62 +10,63 @@
                     主页
                 </router-link>
             </div>
-
-            <div class="navbar-start">
-                <router-link class="navbar-item" :to="{ path: '/' }">
-                    🌐 主页
-                </router-link>
-            </div>
-
-            <div class="navbar-end">
-                <div class="navbar-item">
-                    <el-row :gutter="12" justify="center" align="middle">
-                        <el-col :span="18">
-                            <el-input v-model="state.searchKey"
-                                      class="w-50 m-2"
-                                      placeholder="搜索帖子、标签和用户"
-                                      :prefix-icon="Search"
-                                      @keyup.enter.native="search()"
-                                      clearable>
-                            </el-input>
-                        </el-col>
-                        <el-col :span="6">
-                            <el-button type="primary" @click="search()">检索</el-button>
-                        </el-col>
-                    </el-row>
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start">
+                    <router-link class="navbar-item" :to="{ path: '/' }">
+                        🌐 主页
+                    </router-link>
                 </div>
 
-                <div class="navbar-item">
-                    <el-row :gutter="20" justify="center" align="middle">
-                        <el-col :span="12">
-                            <el-switch v-model="state.darkMode"></el-switch>
-                        </el-col>
-                        <el-col :span="6">
-                            <label for="darkModeSwitch">{{ state.darkMode ? "夜" : "日" }}</label>
-                        </el-col>
-                    </el-row>
-                </div>
-
-                <div class="navbar-item" v-if="token == null || token === ''">
-                    <div class="buttons">
-                        <router-link class="button is-light" :to="{ path: '/register' }">注册</router-link>
-                        <router-link class="button is-light" :to="{ path: '/login' }">登录</router-link>
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <el-row :gutter="12" justify="center" align="middle">
+                            <el-col :span="18">
+                                <el-input v-model="state.searchKey"
+                                          class="w-50 m-2"
+                                          placeholder="搜索帖子、标签和用户"
+                                          :prefix-icon="Search"
+                                          @keyup.enter.native="search()"
+                                          clearable>
+                                </el-input>
+                            </el-col>
+                            <el-col :span="6">
+                                <el-button type="primary" @click="search()">检索</el-button>
+                            </el-col>
+                        </el-row>
                     </div>
-                </div>
 
-                <div class="navbar-item has-dropdown is-hoverable" v-else>
-                    <a class="navbar-link">
-                        {{ user.alias }}
-                    </a>
+                    <div class="navbar-item">
+                        <el-row :gutter="20" justify="center" align="middle">
+                            <el-col :span="12">
+                                <el-switch v-model="state.darkMode"></el-switch>
+                            </el-col>
+                            <el-col :span="6">
+                                <label for="darkModeSwitch">{{ state.darkMode ? "夜" : "日" }}</label>
+                            </el-col>
+                        </el-row>
+                    </div>
 
-                    <div class="navbar-dropdown">
-                        <router-link class="navbar-item" :to="{ path: `/member/${user.username}/home` }">🧘 个人中心
-                        </router-link>
-                        <hr class="navbar-divider">
-                        <router-link class="navbar-item" :to="{ path: `/member/${user.username}/setting` }">⚙ 设置中心
-                        </router-link>
-                        <hr class="navbar-divider">
-                        <a class="navbar-item" @click="logout()"> 👋 退出登录</a>
+                    <div class="navbar-item" v-if="token == null || token === ''">
+                        <div class="buttons">
+                            <router-link class="button is-light" :to="{ path: '/register' }">注册</router-link>
+                            <router-link class="button is-light" :to="{ path: '/login' }">登录</router-link>
+                        </div>
+                    </div>
+
+                    <div class="navbar-item has-dropdown is-hoverable" v-else>
+                        <a class="navbar-link">
+                            {{ user.alias }}
+                        </a>
+
+                        <div class="navbar-dropdown">
+                            <router-link class="navbar-item" :to="{ path: `/member/${user.username}/home` }">🧘 个人中心
+                            </router-link>
+                            <hr class="navbar-divider">
+                            <router-link class="navbar-item" :to="{ path: `/member/${user.username}/setting` }">⚙ 设置中心
+                            </router-link>
+                            <hr class="navbar-divider">
+                            <a class="navbar-item" @click="logout()"> 👋 退出登录</a>
+                        </div>
                     </div>
                 </div>
             </div>
