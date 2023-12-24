@@ -7,16 +7,19 @@
                     class="box-card"
                     shadow="never"
             >
-<!--                <div slot="header" class="has-text-centered">-->
-<!--                    <p class="is-size-5 has-text-weight-bold">{{ topic.title }}</p>-->
-<!--                    <div class="has-text-grey is-size-7 mt-3">-->
-<!--                        <span>{{ dayjs(topic.createTime).format('YYYY/MM/DD HH:mm:ss') }}</span>-->
-<!--                        <el-divider direction="vertical" />-->
-<!--                        <span>发布者：{{ topicUser.alias }}</span>-->
-<!--                        <el-divider direction="vertical" />-->
-<!--                        <span>查看：{{ topic.view }}</span>-->
-<!--                    </div>-->
-<!--                </div>-->
+                <div
+                        slot="header"
+                        class="has-text-centered"
+                >
+                    <p class="is-size-5 has-text-weight-bold">{{ topic.title }}</p>
+                    <div class="has-text-grey is-size-7 mt-3">
+                        <span>{{ dayjs(topic.createTime).format('YYYY/MM/DD HH:mm:ss') }}</span>
+                        <el-divider direction="vertical" />
+                        <span>发布者：{{ topicUser.alias }}</span>
+                        <el-divider direction="vertical" />
+                        <span>查看：{{ topic.view }}</span>
+                    </div>
+                </div>
 
                 <!--Markdown-->
                 <div id="preview" />
@@ -61,7 +64,11 @@
         </div>
 
         <div class="column">
-            作者信息
+            <!--作者-->
+            <Author
+                    v-if="flag"
+                    :user="topicUser"
+            />
         </div>
     </div>
 </template>
@@ -69,10 +76,13 @@
 <script>
 import { deleteTopic, getTopic } from '@/api/post'
 import { mapGetters } from 'vuex'
+import Author from '@/views/post/Author'
 import Vditor from 'vditor'
+
 import 'vditor/dist/index.css'
 export default {
     name: 'TopicDetail',
+    components: { Author },
     computed: {
         ...mapGetters([
             'token','user'
