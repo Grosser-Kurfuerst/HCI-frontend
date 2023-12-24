@@ -16,7 +16,7 @@
                                     <div class="level-left">
                                         <p class="ellipsis is-ellipsis-1">
                                             <el-tooltip class="item" effect="dark" :content="item.title" placement="top">
-                                                <router-link :to="{path:'/login'}">
+                                                <router-link :to="{name:'post-detail',params:{id:item.id}}">
                                                     <span class="is-size-6">{{ item.title }}</span>
                                                 </router-link>
                                             </el-tooltip>
@@ -92,27 +92,47 @@
                     </el-tab-pane>
                 </el-tabs>
             </div>
+            <!--分页-->
+            <pagination
+                    v-show="page.total > 0"
+                    :total="page.total"
+                    :page.sync="page.current"
+                    :limit.sync="page.size"
+                    @pagination="init"
+            />
         </el-card>
     </div>
 </template>
 
 <script>
 import { getList } from '@/api/post'
+import Pagination from '@/components/Pagination'
     export default {
         name: 'TopicList',
+        components: { Pagination },
         data() {
             return {
                 activeName: 'latest',
-                articleList: []
+                articleList: [],
+                page: {
+                    current: 1,
+                    size: 10,
+                    total: 0,
+                    tab: 'latest'
+                }
             }
         },
         created() {
-            this.init(this.tab)
+            this.init(this.page.current, this.page.size,this.tab)
         },
         methods: {
-            init(tab) {
-                getList(1, 10, tab).then((response) => {
+
+            init(page,size,tab) {
+                getList(page, size, tab).then((response) => {
                     const { data } = response
+                    this.page.current = data.current
+                    this.page.total = data.total
+                    this.page.size = data.size
                     this.articleList = data.records
                 })
             },

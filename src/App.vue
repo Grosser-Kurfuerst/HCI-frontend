@@ -4,11 +4,11 @@
             <Header></Header>
         </div>
 
-        <div class="container context" style="margin-top: 80px">
+        <div class="container context" style="margin-top: 80px;min-height: 550px">
             <router-view :key="route.fullPath"></router-view>
         </div>
 
-        <div class="footer">
+        <div class="footer" style="background-color: #f6f6f6" >
             <Footer></Footer>
         </div>
     </div>
