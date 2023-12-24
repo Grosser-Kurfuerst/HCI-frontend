@@ -16,7 +16,7 @@
                                     <div class="level-left">
                                         <p class="ellipsis is-ellipsis-1">
                                             <el-tooltip class="item" effect="dark" :content="item.title" placement="top">
-                                                <router-link :to="{path:'/login'}">
+                                                <router-link :to="{name:'post-detail',params:{id:item.id}}">
                                                     <span class="is-size-6">{{ item.title }}</span>
                                                 </router-link>
                                             </el-tooltip>
