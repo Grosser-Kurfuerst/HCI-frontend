@@ -4,12 +4,12 @@
         <div class="column is-three-quarters">
             <!--主题-->
             <el-card
-                    class="box-card"
-                    shadow="never"
+                class="box-card"
+                shadow="never"
             >
                 <div
-                        slot="header"
-                        class="has-text-centered"
+                    slot="header"
+                    class="has-text-centered"
                 >
                     <p class="is-size-5 has-text-weight-bold">{{ topic.title }}</p>
                     <div class="has-text-grey is-size-7 mt-3">
@@ -30,9 +30,9 @@
                         <p class="level-item">
                             <b-taglist>
                                 <router-link
-                                        v-for="(tag, index) in tags"
-                                        :key="index"
-                                        :to="{ name: 'tag', params: { name: tag.name } }"
+                                    v-for="(tag, index) in tags"
+                                    :key="index"
+                                    :to="{ name: 'tag', params: { name: tag.name } }"
                                 >
                                     <b-tag type="is-info is-light mr-1">
                                         {{ "#" + tag.name }}
@@ -42,32 +42,38 @@
                         </p>
                     </div>
                     <div
-                            v-if="token && user.id === topicUser.id"
-                            class="level-right"
+                        v-if="token && user.id === topicUser.id"
+                        class="level-right"
                     >
                         <router-link
-                                class="level-item"
-                                :to="{name:'topic-edit',params: {id:topic.id}}"
+                            class="level-item"
+                            :to="{name:'topic-edit',params: {id:topic.id}}"
                         >
                             <span class="tag">编辑</span>
                         </router-link>
                         <a class="level-item">
               <span
-                      class="tag"
-                      @click="handleDelete(topic.id)"
+                  class="tag"
+                  @click="handleDelete(topic.id)"
               >删除</span>
                         </a>
                     </div>
                 </nav>
             </el-card>
 
+            <lv-comments :slug="topic.id" />
         </div>
 
         <div class="column">
             <!--作者-->
             <Author
-                    v-if="flag"
-                    :user="topicUser"
+                v-if="flag"
+                :user="topicUser"
+            />
+            <!--推荐-->
+            <recommend
+                v-if="flag"
+                :topic-id="topic.id"
             />
         </div>
     </div>
@@ -77,12 +83,14 @@
 import { deleteTopic, getTopic } from '@/api/post'
 import { mapGetters } from 'vuex'
 import Author from '@/views/post/Author'
+import Recommend from '@/views/post/Recommend'
+import LvComments from '@/components/Comment/Comments'
 import Vditor from 'vditor'
-
 import 'vditor/dist/index.css'
+
 export default {
     name: 'TopicDetail',
-    components: { Author },
+    components: { Author, Recommend, LvComments },
     computed: {
         ...mapGetters([
             'token','user'
@@ -113,6 +121,7 @@ export default {
             getTopic(this.$route.params.id).then(response => {
                 const { data } = response
                 document.title = data.topic.title
+
                 this.topic = data.topic
                 this.tags = data.tags
                 this.topicUser = data.user
@@ -125,6 +134,7 @@ export default {
             deleteTopic(id).then(value => {
                 const { code, message } = value
                 alert(message)
+
                 if (code === 200) {
                     setTimeout(() => {
                         this.$router.push({ path: '/' })
@@ -135,6 +145,7 @@ export default {
     }
 }
 </script>
+
 <style>
 #preview {
     min-height: 300px;
