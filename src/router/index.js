@@ -42,6 +42,12 @@ const routes = [
     meta: { title: "详情" }
   },
   {
+    name: 'tag',
+    path: '/tag/:name',
+    component: () => import('@/views/tag/Tag'),
+    meta: { title: '主题列表' }
+  },
+  {
     path: '/404',
     name: '404',
     component: () => import('@/views/error/404'),
