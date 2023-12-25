@@ -34,7 +34,11 @@ html {
   }
 }
 
-
+/*@media (min-width: 1200px) {*/
+/*  .container {*/
+/*    width: 1080px;*/
+/*  }*/
+/*}*/
 
 /*滚动条*/
 ::-webkit-scrollbar {
@@ -92,8 +96,8 @@ a:hover {
 .el-card {
   border-radius: 15px !important;
   margin-bottom: 16px;
-  /*box-shadow: 0 0.5em 1em -0.1em rgba(10, 10, 10, 0.1),*/
-  /*0 0 0 1px rgba(10, 10, 10, 0.02);*/
+  box-shadow: 0 0.4em 1em -0.1em rgba(10, 10, 10, 0.1),
+  0 0 0 1px rgba(10, 10, 10, 0.02);
   /*border: none;*/
 }
 

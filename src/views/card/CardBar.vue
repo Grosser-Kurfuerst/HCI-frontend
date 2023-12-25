@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section style="position: fixed;width: 230px">
     <!--是否登录-->
     <login-welcome />
 

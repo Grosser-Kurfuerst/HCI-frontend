@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div class="box" >🔔 {{ billboard.content }}</div>
+<!--    <div class="box" >🔔 {{ billboard.content }}</div>-->
     <div class="columns">
       <div class="column is-three-quarters">
         <TopicList></TopicList>
       </div>
-      <div class="column">
+      <div class="column" >
         <CardBar></CardBar>
       </div>
     </div>

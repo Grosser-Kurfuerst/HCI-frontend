@@ -124,7 +124,7 @@
 </template>
 
 <script>
-import {getList, getTopic} from '@/api/post'
+import {getList, getOnlyTopic} from '@/api/post'
 import Pagination from '@/components/Pagination'
 
 export default {
@@ -137,7 +137,7 @@ export default {
             articleContent: [],
             page: {
                 current: 1,
-                size: 10,
+                size: 20,
                 total: 0,
                 tab: 'latest'
             }
@@ -160,7 +160,7 @@ export default {
                 this.page.size = data.size
                 this.articleList = data.records
                 this.articleList.forEach((article, index) => {
-                    getTopic(article.id).then((contentResponse) => {
+                    getOnlyTopic(article.id).then((contentResponse) => {
                         const { data } = contentResponse
                         var c = data.topic.content.split("#").join("")
                         if (c.length > 200){
