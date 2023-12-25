@@ -3,6 +3,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import format from 'date-fns/format'
 
 // Bulma
 import Bulma from 'bulma'
