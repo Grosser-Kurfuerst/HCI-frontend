@@ -1,40 +1,40 @@
 <template>
-    <el-card class="box-card">
-        <div slot="header">
-            <span>tips</span>
-        </div>
-        <div class="block">
-            <div class="has-text-left">
-                {{ tip.content }}
-            </div>
-            <div class="has-text-right">
-                ——{{ tip.author }}
-            </div>
-        </div>
-    </el-card>
+  <el-card class="box-card" shadow="never">
+    <div slot="header">
+      <span>🥳 每日一句</span>
+    </div>
+    <div>
+      <div class="has-text-left block">
+        {{ tip.content }}
+      </div>
+      <div class="has-text-right mt-5 block">
+        ——{{ tip.author }}
+      </div>
+    </div>
+  </el-card>
 </template>
 
 <script>
-import {getRandomTip} from "@/api/tip";
+import {getTodayTip} from '@/api/tip'
 
 export default {
-    name: "Tip",
-    data() {
-        return {
-            tip:{}
-        }
-    },
-    created() {
-        this.fetchRandomTip()
-    },
-    methods: {
-        fetchRandomTip() {
-            getRandomTip().then((value) => {
-                const {data} = value
-                this.tip = data
-            })
-        }
+  name: 'Tip',
+  data() {
+    return {
+      tip: {}
     }
+  },
+  created() {
+    this.fetchTodayTip()
+  },
+  methods: {
+    fetchTodayTip() {
+      getTodayTip().then(response => {
+        const { data } = response
+        this.tip = data
+      })
+    }
+  }
 }
 </script>
 

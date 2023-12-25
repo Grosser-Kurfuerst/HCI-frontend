@@ -1,6 +1,6 @@
 import router from './router'
 import store from './store'
-import getPageTitle from '@/utils/getPageTitle'
+import getPageTitle from '@/utils/get-page-title'
 
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css'
@@ -26,8 +26,12 @@ router.beforeEach(async (to, from, next) => {
             await store.dispatch('user/getInfo')
             next()
         }
-    } else {
+    } else if (!to.meta.requireAuth)
+    {
         next()
+    }
+    else {
+        next('/login')
     }
 })
 

@@ -1,35 +1,31 @@
 {
-  "name": "hci-frontend",
+  "name": "hci_community_frontend",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "set NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve",
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "axios": "^1.6.2",
-    "buefy": "^0.9.25",
-    "bulma": "^0.9.4",
-    "core-js": "^3.8.3",
-    "darkreader": "^4.9.73",
+    "axios": "^0.21.1",
+    "buefy": "^0.9.4",
+    "core-js": "^3.6.5",
+    "darkreader": "^4.9.27",
     "date-fns": "^2.17.0",
-    "dayjs": "^1.11.10",
-    "element-plus": "^2.4.2",
-    "font-awesome": "^4.7.0",
-    "js-cookie": "^3.0.5",
+    "dayjs": "^1.10.4",
+    "element-ui": "^2.15.0",
+    "js-cookie": "^2.2.1",
     "nprogress": "^0.2.0",
-    "vditor": "^3.9.7",
-    "vue": "^3.2.13",
-    "vue-router": "^4.0.3",
-    "vuex": "^4.0.0"
+    "vditor": "^3.8.1",
+    "vue": "^2.6.11",
+    "vue-router": "^3.2.0",
+    "vuex": "^3.4.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~5.0.0",
-    "@vue/cli-plugin-router": "~5.0.0",
-    "@vue/cli-plugin-vuex": "~5.0.0",
-    "@vue/cli-service": "~5.0.0",
-    "sass": "^1.27.0",
-    "sass-loader": "^10.0.4",
-    "vue-cli-plugin-element-plus": "~0.0.13"
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-vuex": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "vue-template-compiler": "^2.6.11"
   }
 }

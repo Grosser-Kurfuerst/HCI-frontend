@@ -16,14 +16,14 @@
       </div>
 
       <div class="column">
-        <!--用户发布的话题-->
+        <!--用户发布的文章-->
         <el-card class="box-card content" shadow="never">
           <div slot="header" class="has-text-weight-bold">
-            <span>话题</span>
+            <span>文章</span>
           </div>
 
           <div v-if="topics.length===0">
-            暂无话题
+            暂无文章
           </div>
 
           <div v-else class="topicUser-info">
@@ -48,13 +48,12 @@
                 <div v-if="topicUser.username === user.username" class="level">
                   <div class="level-item mr-1">
                     <router-link :to="{name:'topic-edit',params: {id:item.id}}">
-                      <span class="tag is-warning">编辑</span>
+                        <b-button label="编辑" type="is-info" size="is-small"/>
                     </router-link>
                   </div>
-                  <div class="level-item">
-                    <a @click="handleDelete(item.id)">
-                      <span class="tag is-danger">删除</span>
-                    </a>
+                  <div class="level-item" >
+                      <b-button label="删除" type="is-danger" size="is-small"
+                                @click="confirmCustomDelete(item.id)" />
                   </div>
                 </div>
               </div>
@@ -63,12 +62,12 @@
 
           <!--分页-->
           <pagination
-              v-show="page.total > 0"
-              class="mt-5"
-              :total="page.total"
-              :page.sync="page.current"
-              :limit.sync="page.size"
-              @pagination="fetchUserById"
+            v-show="page.total > 0"
+            class="mt-5"
+            :total="page.total"
+            :page.sync="page.current"
+            :limit.sync="page.size"
+            @pagination="fetchUserById"
           />
         </el-card>
       </div>
@@ -81,6 +80,7 @@ import { getInfoByName } from '@/api/user'
 import pagination from '@/components/Pagination/index'
 import { mapGetters } from 'vuex'
 import { deleteTopic } from '@/api/post'
+
 export default {
   name: 'Profile',
   components: { pagination },
@@ -116,15 +116,29 @@ export default {
       deleteTopic(id).then(value => {
         const { code, message } = value
         alert(message)
+
         if (code === 200) {
           setTimeout(() => {
             this.$router.push({ path: '/' })
           }, 500)
         }
       })
-    }
+    },
+    confirmCustomDelete(id) {
+        this.$buefy.dialog.confirm({
+            title: '删除文章',
+            message: '你确定要<b>删除</b> 文章吗?',
+            confirmText: '删除',
+            cancelText: '取消',
+            type: 'is-danger',
+            hasIcon: true,
+            onConfirm: () => this.handleDelete(id),
+          })
+      }
   }
 }
 </script>
+
 <style scoped>
+
 </style>

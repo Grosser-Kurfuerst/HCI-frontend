@@ -4,20 +4,20 @@
       <form @submit.prevent="onSubmit">
         <b-field>
           <b-input
-              v-model.lazy="commentText"
-              type="textarea"
-              maxlength="400"
-              placeholder="Add a comment..."
-              :disabled="isLoading"
+            v-model.lazy="commentText"
+            type="textarea"
+            maxlength="400"
+            placeholder="Add a comment..."
+            :disabled="isLoading"
           ></b-input>
         </b-field>
         <nav class="level">
           <div class="level-left">
             <b-button
-                type="is-primary"
-                native-type="submit"
-                class="level-item"
-                :disabled="isLoading"
+              type="is-primary"
+              native-type="submit"
+              class="level-item"
+              :disabled="isLoading"
             >
               Comment
             </b-button>
@@ -30,6 +30,7 @@
 
 <script>
 import { pushComment } from '@/api/comment'
+
 export default {
   name: 'LvCommentsForm',
   data() {

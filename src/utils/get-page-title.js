@@ -1,4 +1,4 @@
-const title = 'HCI社区系统'
+const title = '蓝鲸开发者社区'
 
 export default function getPageTitle(pageTitle) {
     if (pageTitle) {
