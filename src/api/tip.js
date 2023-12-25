@@ -1,8 +1,8 @@
 import request from '@/utils/request'
 
-export function getRandomTip() {
-    return request({
-        url: '/tip/random',
-        method: 'get'
-    })
+export function getTodayTip() {
+  return request({
+    url: '/tip/random',
+    method: 'get'
+  })
 }

@@ -1,43 +1,31 @@
 <template>
-    <div>
-        <div class="mb-5">
-            <Header></Header>
-        </div>
-
-        <div class="container context" style="margin-top: 80px;min-height: 550px">
-            <router-view :key="route.fullPath"></router-view>
-        </div>
-
-        <div class="footer" style="background-color: #f6f6f6" >
-            <Footer></Footer>
-        </div>
+  <div>
+    <div class="mb-5">
+      <Header></Header>
     </div>
+
+    <div class="container context">
+        <router-view :key="this.$route.fullPath"></router-view>
+    </div>
+
+    <div>
+      <Footer></Footer>
+    </div>
+  </div>
 </template>
 
-<script setup>
+<script>
 import Header from "@/components/Layout/Header";
 import Footer from "@/components/Layout/Footer";
 
-import {useRoute} from "vue-router";
-
-
-const route = useRoute()
+export default {
+  name: "App",
+  components: { Header, Footer },
+};
 </script>
 
-<style>
-#app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-}
-
-
-
-.footer {
-    position: absolute;
-    left: 0;
-    right: 0;
+<style scoped>
+.container {
+  min-height: 520px;
 }
 </style>

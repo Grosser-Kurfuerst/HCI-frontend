@@ -1,40 +1,42 @@
-import { createApp } from 'vue'
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-
-// Bulma
-import Bulma from 'bulma'
-import 'bulma/css/bulma.css'
-
-// ElementPlus
-import ElementPlus from 'element-plus'
-import 'element-plus/theme-chalk/index.css'
-
-// permission
-import '@/permission'
+// Buefy
+import Buefy from 'buefy'
+import 'buefy/dist/buefy.css'
+// ElementUI
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 import '@/assets/app.css'
-
+import './assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css'
+import format from 'date-fns/format'
+import '@/permission'
 import relativeTime from 'dayjs/plugin/relativeTime';
+
 // 国际化
 import 'dayjs/locale/zh-cn'
-
-//Font Awesome
-import 'font-awesome/css/font-awesome.min.css';
-
-
 const dayjs = require('dayjs');
+
 // 相对时间插件
 dayjs.extend(relativeTime)
+
 dayjs.locale('zh-cn') // use locale globally
 dayjs().locale('zh-cn').format() // use locale in a specific instance
 
-const app = createApp(App).use(store).use(router)
+Vue.prototype.dayjs = dayjs;//可以全局使用dayjs
 
-// 设置全局属性，以便在组件中访问
-app.config.globalProperties.$dayjs = dayjs;
-app.use(ElementPlus)
-app.use(Bulma)
-app.use(store)
-app.mount('#app')
+Vue.filter('date', (date) => {
+  return format(new Date(date), 'yyyy-MM-dd')
+})
+
+Vue.use(Buefy)
+Vue.use(ElementUI);
+
+Vue.config.productionTip = false
+
+new Vue({
+  router,
+  store,
+  render: h => h(App)
+}).$mount('#app')

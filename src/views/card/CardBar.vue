@@ -1,26 +1,23 @@
 <template>
-    <el-row>
-        <el-col :span="24">
-            <login-welcome/>
-        </el-col>
+  <section>
+    <!--是否登录-->
+    <login-welcome />
 
-    </el-row>
-    <el-row class="mt-3">
-        <el-col :span="24">
-            <tip/>
-        </el-col>
-    </el-row>
+    <!--今日赠言-->
+    <tip-card />
+
+  </section>
 </template>
 
 <script>
-    import Tip from '@/views/card/Tip'
-    import LoginWelcome from "@/views/card/LoginWelcome.vue";
-    export default {
-        name: 'CardBar',
-        components: {LoginWelcome, Tip },
-    }
+import TipCard from '@/views/card/Tip'
+import LoginWelcome from '@/views/card/LoginWelcome'
+
+export default {
+  name: 'CardBar',
+  components: {TipCard,LoginWelcome }
+}
 </script>
 
 <style scoped>
-
 </style>

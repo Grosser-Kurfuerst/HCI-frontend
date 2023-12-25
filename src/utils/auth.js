@@ -19,7 +19,7 @@ export function removeToken() {
 }
 
 export function removeAll() {
-    return Cookies.removeAll()
+    return Cookies.Cookies.removeAll()
 }
 
 export function setDarkMode(mode) {

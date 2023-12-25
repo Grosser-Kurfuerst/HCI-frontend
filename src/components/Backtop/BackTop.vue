@@ -1,7 +1,7 @@
 <template>
-    <el-backtop :bottom="60" :right="60">
-        <div title="回到顶部"
-             style="{
+  <el-backtop :bottom="60" :right="60">
+    <div title="回到顶部"
+        style="{
         height: 100%;
         width: 100%;
         background-color: #f2f5f6;
@@ -11,14 +11,16 @@
         line-height: 40px;
         color: #167df0;
       }"
-        >
-            <i class="fa fa-arrow-up"></i>
-        </div>
-    </el-backtop>
+    >
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </el-backtop>
 </template>
 
-<script setup>
-
+<script>
+export default {
+  name: "BackTop"
+}
 </script>
 
 <style scoped>

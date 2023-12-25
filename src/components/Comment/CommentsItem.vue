@@ -17,6 +17,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'LvCommentsItem',
   props: {
@@ -27,3 +28,5 @@ export default {
   }
 }
 </script>
+
+
