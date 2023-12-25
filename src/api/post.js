@@ -28,6 +28,17 @@ export function getTopic(id) {
     }
   })
 }
+// 浏览 不增加浏览量
+export function getOnlyTopic(id) {
+  return request({
+    url: `/post/only`,
+    method: 'get',
+    params: {
+      id: id
+    }
+  })
+}
+
 // 获取详情页推荐
 export function getRecommendTopics(id) {
   return request({
