@@ -16,14 +16,14 @@
       </div>
 
       <div class="column">
-        <!--用户发布的话题-->
+        <!--用户发布的文章-->
         <el-card class="box-card content" shadow="never">
           <div slot="header" class="has-text-weight-bold">
-            <span>话题</span>
+            <span>文章</span>
           </div>
 
           <div v-if="topics.length===0">
-            暂无话题
+            暂无文章
           </div>
 
           <div v-else class="topicUser-info">

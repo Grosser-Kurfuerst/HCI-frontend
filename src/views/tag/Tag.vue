@@ -5,7 +5,7 @@
         <div slot="header" class="">
           🔍 检索到 <span class="has-text-info">{{ topics.length }}</span> 篇有关
           <span class="has-text-info">{{ this.$route.params.name }}</span>
-          的话题
+          的文章
         </div>
 
         <div class="text item">
