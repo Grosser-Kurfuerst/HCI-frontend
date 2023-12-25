@@ -113,4 +113,19 @@ export default {
 </script>
 
 <style scoped>
+/*.columns {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    min-height: 100vh;*/
+/*}*/
+
+/*.column {*/
+/*    width: 100%;*/
+/*}*/
+
+/*!* 如果你想使登录卡片有固定宽度，可以根据需要调整这里的宽度 *!*/
+/*.is-half {*/
+/*    max-width: 400px;*/
+/*}*/
 </style>

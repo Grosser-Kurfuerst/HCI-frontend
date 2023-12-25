@@ -48,13 +48,12 @@
                 <div v-if="topicUser.username === user.username" class="level">
                   <div class="level-item mr-1">
                     <router-link :to="{name:'topic-edit',params: {id:item.id}}">
-                      <span class="tag is-warning">编辑</span>
+                        <b-button label="编辑" type="is-info" size="is-small"/>
                     </router-link>
                   </div>
-                  <div class="level-item">
-                    <a @click="handleDelete(item.id)">
-                      <span class="tag is-danger">删除</span>
-                    </a>
+                  <div class="level-item" >
+                      <b-button label="删除" type="is-danger" size="is-small"
+                                @click="confirmCustomDelete(item.id)" />
                   </div>
                 </div>
               </div>
@@ -124,7 +123,18 @@ export default {
           }, 500)
         }
       })
-    }
+    },
+    confirmCustomDelete(id) {
+        this.$buefy.dialog.confirm({
+            title: '删除文章',
+            message: '你确定要<b>删除</b> 文章吗?',
+            confirmText: '删除',
+            cancelText: '取消',
+            type: 'is-danger',
+            hasIcon: true,
+            onConfirm: () => this.handleDelete(id),
+          })
+      }
   }
 }
 </script>

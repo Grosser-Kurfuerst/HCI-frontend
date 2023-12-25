@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="box">🔔 {{ billboard.content }}</div>
+    <div class="box" >🔔 {{ billboard.content }}</div>
     <div class="columns">
       <div class="column is-three-quarters">
         <TopicList></TopicList>
@@ -40,3 +40,10 @@ export default {
   },
 };
 </script>
+<style scoped>
+.box {
+    border-radius: 10px;
+    box-shadow: 0 0.5em 1em -0.1em rgba(10, 10, 10, 0.1),
+    0 0 0 1px rgba(10, 10, 10, 0.02);
+}
+</style>

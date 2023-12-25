@@ -52,7 +52,7 @@
         <b-navbar-item tag="div">
           <b-switch
             v-model="darkMode"
-            passive-type="is-warning"
+            passive-type="is-info"
             type="is-dark"
           >
             {{ darkMode ? "夜" : "日" }}

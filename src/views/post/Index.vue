@@ -15,7 +15,7 @@
                   <p class="ellipsis is-ellipsis-1">
                     <el-tooltip class="item" effect="dark" :content="item.title" placement="top">
                       <router-link :to="{name:'post-detail',params:{id:item.id}}">
-                        <span class="is-size-6">{{ item.title }}</span>
+                        <span class="is-size-6"><b>{{ item.title }}</b></span>
                       </router-link>
                     </el-tooltip>
                   </p>
@@ -61,7 +61,7 @@
                   <p class="ellipsis is-ellipsis-1">
                     <el-tooltip class="item" effect="dark" :content="item.title" placement="top">
                       <router-link :to="{name:'post-detail',params:{id:item.id}}">
-                        <span class="is-size-6">{{ item.title }}</span>
+                        <span class="is-size-6"><b>{{ item.title }}</b><</span>
                       </router-link>
                     </el-tooltip>
                   </p>

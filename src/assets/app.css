@@ -18,7 +18,7 @@ html {
 
 /*背景图*/
 /*body {*/
-/*    background-image: url('https://api.mz-moe.cn/img.php');*/
+/*    background-image: url('https://picx.zhimg.com/80/v2-db29b0fbd2f78dd8c1b7f79413dd7581_1440w.webp?source=1def8aca');*/
 /*    background-repeat: round;*/
 /*}*/
 
@@ -34,11 +34,7 @@ html {
   }
 }
 
-@media (min-width: 1200px) {
-  .container {
-    width: 1080px;
-  }
-}
+
 
 /*滚动条*/
 ::-webkit-scrollbar {
@@ -79,7 +75,7 @@ a {
 }
 
 a:hover {
-  color: #f60;
+  color: #4e87e8;
   text-decoration: none !important;
 }
 
@@ -94,8 +90,10 @@ a:hover {
 
 /*统一卡片样式*/
 .el-card {
-  /*border-radius: 3px !important;*/
+  border-radius: 15px !important;
   margin-bottom: 16px;
+  box-shadow: 0 0.5em 1em -0.1em rgba(10, 10, 10, 0.1),
+  0 0 0 1px rgba(10, 10, 10, 0.02);
   /*border: none;*/
 }
 
@@ -112,7 +110,7 @@ a:hover {
 
 ::selection {
   text-shadow: none;
-  background: #002FA7;
+  background: #a5bcef;
 }
 
 /* 搜索框 */
