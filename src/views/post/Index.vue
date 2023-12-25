@@ -3,7 +3,7 @@
     <el-card shadow="never">
       <div slot="header" class="clearfix">
         <el-tabs v-model="activeName" @tab-click="handleClick">
-          <el-tab-pane label="最新主题" name="latest">
+          <el-tab-pane label="最新文章" name="latest">
             <article v-for="(item, index) in articleList" :key="index" class="media">
               <div class="media-left">
                 <figure class="image is-48x48">
@@ -49,7 +49,7 @@
               <div class="media-right" />
             </article>
           </el-tab-pane>
-          <el-tab-pane label="热门主题" name="hot">
+          <el-tab-pane label="热门文章" name="hot">
             <article v-for="(item, index) in articleList" :key="index" class="media">
               <div class="media-left">
                 <figure class="image is-48x48">
