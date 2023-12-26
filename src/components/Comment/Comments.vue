@@ -1,5 +1,5 @@
 <template>
-  <section class="box comments">
+  <section class="box comments" style="border-radius: 15px">
     <hr />
     <h3 class="title is-5">评论区</h3>
     <lv-comments-form :slug="slug" v-if="token" @loadComments="fetchComments"/>
