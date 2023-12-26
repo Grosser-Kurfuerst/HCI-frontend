@@ -7,7 +7,7 @@
             v-model.lazy="commentText"
             type="textarea"
             maxlength="400"
-            placeholder="Add a comment..."
+            placeholder="发表一条友善的评论吧"
             :disabled="isLoading"
           ></b-input>
         </b-field>
@@ -19,7 +19,7 @@
               class="level-item"
               :disabled="isLoading"
             >
-              Comment
+              发送
             </b-button>
           </div>
         </nav>
