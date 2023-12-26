@@ -107,7 +107,7 @@ export default {
             cache: {
                 enable: false
             },
-            mode: 'wysiwyg'
+            mode: 'sv'
         })
     },
     methods: {

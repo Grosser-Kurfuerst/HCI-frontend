@@ -116,7 +116,7 @@ export default {
         handleDelete(id) {
             deleteTopic(id).then(value => {
                 const {code, message} = value
-                alert(message)
+                this.$message.success('成功删除文章');
 
                 if (code === 200) {
                     setTimeout(() => {
