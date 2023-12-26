@@ -49,13 +49,27 @@ export default {
     async onSubmit() {
       this.isLoading = true
       try {
+        if (this.commentText.trim() === '') {
+          this.$buefy.toast.open({
+            message: '评论不能为空',
+            type: 'is-danger'
+          })
+          return; // 阻止发送
+        }
+
         let postData = {}
         console.log(this.commentText)
         postData['content'] = this.commentText
         postData['topic_id'] = this.slug
+
+        this.commentText = ''; // 清空输入框内容
+
         await pushComment(postData)
         this.$emit('loadComments', this.slug)
-        this.$message.success('留言成功')
+        this.$buefy.toast.open({
+          message: '留言成功',
+          type: 'is-success'
+        })
       } catch (e) {
         this.$buefy.toast.open({
           message: `Cannot comment this story. ${e}`,
