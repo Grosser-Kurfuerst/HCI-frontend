@@ -66,9 +66,9 @@
                     <el-tab-pane label="热门文章" name="hot">
                         <article v-for="(item, index) in articleList" :key="index" class="media">
                             <div class="media-left">
-                                <figure class="image is-48x48">
-                                    <img :src="`https://cn.gravatar.com/avatar/${item.userId}?s=164&d=monsterid`"
-                                         style="border-radius: 5px;">
+                                <figure class="image is-58x58" style="margin-top: 1rem">
+                                    <img :src="item.avatar"
+                                         style="border-radius: 5px;width: 58px;height: 58px">
                                 </figure>
                             </div>
                             <div class="media-content">
@@ -81,30 +81,41 @@
                                         </el-tooltip>
                                     </p>
                                 </div>
-                                <nav class="level has-text-grey is-mobile  is-size-7 mt-2">
+                                <router-link :to="{name:'post-detail',params:{id:item.id}}">
+                                    <div v-if="articleContent[index]"
+                                         class="level has-text-grey is-mobile  is-size-6 mt-3"
+                                         style="-webkit-line-clamp:2;overflow:hidden;text-overflow: ellipsis;
+                                      width: 43rem;-webkit-box-orient: vertical; display: -webkit-box;
+                                      margin-bottom: 1rem"
+                                    >{{ articleContent[index] }}</div>
+                                </router-link>
+                                <nav class="level has-text-grey is-mobile  is-size-7 mt-1">
                                     <div class="level-left">
+                                        <router-link class="level-item"
+                                                     :to="{ path: `/member/${item.username}/home` }">
+                                            {{ item.alias }}
+                                        </router-link>
                                         <div class="level-left">
-                                            <router-link class="level-item"
-                                                         :to="{ path: `/member/${item.username}/home` }">
-                                                {{ item.alias }}
-                                            </router-link>
-
-                                            <span class="mr-1">
-                        发布于:{{ dayjs(item.createTime).format("YYYY/MM/DD") }}
-                      </span>
-
-                                            <span
-                                                    v-for="(tag, index) in item.tags"
-                                                    :key="index"
-                                                    class="tag is-hidden-mobile is-success is-light mr-1"
-                                            >
-                        <router-link :to="{ name: 'tag', params: { name: tag.name } }">
-                          {{ "#" + tag.name }}
-                        </router-link>
-                      </span>
-
-                                            <span class="is-hidden-mobile">浏览:{{ item.view }}</span>
+                                            <span v-for="(tag, index) in item.tags"
+                                                  :key="index"
+                                                  style="background: #d2e6ff"
+                                                  class="tag is-hidden-mobile is-success is-light mr-1">
+                                                <router-link :to="{ name: 'tag', params: { name: tag.name } }">
+                                                    {{ "#" + tag.name }}
+                                                </router-link>
+                                            </span>
                                         </div>
+                                        <span class="is-hidden-mobile"
+                                              style="padding-left: 10px"
+                                        >浏览量:{{ item.view }}</span>
+
+                                    </div>
+                                    <div class="level-right" style="margin-right: 0">
+                                            <span class="mr-1">
+                                                发布于:{{ dayjs(item.createTime).format("YYYY/MM/DD") }}
+                                            </span>
+
+
                                     </div>
                                 </nav>
                             </div>

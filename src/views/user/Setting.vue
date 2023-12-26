@@ -153,6 +153,7 @@ export default {
                 // 返回 true 允许上传
                 this.user.avatar = imageUrl;
                 update(this.user);
+                this.$message.success('头像上传成功');
                 return true;
             };
 
@@ -167,6 +168,7 @@ export default {
 
                 // 同时将新的头像链接保存到数据库中
                 update(this.user);
+                this.$message.success('头像上传成功');
             } else {
                 this.$message.error('头像上传失败');
             }

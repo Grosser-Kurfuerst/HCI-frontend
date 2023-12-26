@@ -5,10 +5,7 @@
         <span>简洁、实用、美观</span>
 
         <span style="float: right">
-          <router-link :to="{path:'/admin/login'}">
-            管理员登录
-          </router-link>
-          |
+            |
           <a href="/?lang=zh_CN">中文</a> |
           <a href="/?lang=en_US">English</a>
         </span>
