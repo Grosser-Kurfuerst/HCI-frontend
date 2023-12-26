@@ -77,19 +77,29 @@ export default {
       {
         follow(id).then(response => {
           const { message } = response
-          this.$message.success(message)
+            this.$buefy.toast.open({
+                message: message,
+                type: 'is-success'
+            })
+
           this.hasFollow = !this.hasFollow
           this.user.followerCount = parseInt(this.user.followerCount) + 1
         })
       }
       else{
-        this.$message.success('请先登录')
+          this.$buefy.toast.open({
+              message: '请先登录',
+              type: 'is-warning'
+          })
       }
     },
     handleUnFollow: function(id) {
       unFollow(id).then(response => {
         const { message } = response
-        this.$message.success(message)
+          this.$buefy.toast.open({
+              message: message,
+              type: 'is-success'
+          })
         this.hasFollow = !this.hasFollow
         this.user.followerCount = parseInt(this.user.followerCount) - 1
       })

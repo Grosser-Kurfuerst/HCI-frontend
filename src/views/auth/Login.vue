@@ -86,11 +86,12 @@ export default {
           this.$store
             .dispatch("user/login", this.ruleForm)
             .then(() => {
-              this.$message({
-                message: "恭喜你，登录成功",
-                type: "success",
-                duration: 2000,
-              });
+                this.$buefy.toast.open({
+                    message: '恭喜你，登录成功',
+                    type: 'is-success',
+                    duration: 2000,
+                })
+
 
               setTimeout(() => {
                 this.loading = false;

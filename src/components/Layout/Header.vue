@@ -151,7 +151,10 @@ export default {
   methods: {
     async logout() {
       this.$store.dispatch('user/logout').then(() => {
-        this.$message.info('退出登录成功')
+          this.$buefy.toast.open({
+              message: '成功退出登录',
+              type: 'is-success'
+          })
         setTimeout(() => {
           this.$router.push({ path: this.redirect || '/' })
         }, 500)
@@ -160,11 +163,10 @@ export default {
     search() {
       console.log(this.token)
       if (this.searchKey.trim() === null || this.searchKey.trim() === '') {
-        this.$message.info({
-          showClose: true,
-          message: '请输入关键字搜索！',
-          type: 'warning'
-        })
+          this.$buefy.toast.open({
+              message: '请输入关键字搜索！',
+              type: 'is-warning'
+          })
         return false
       }
       this.$router.push({ path: '/search?key=' + this.searchKey })

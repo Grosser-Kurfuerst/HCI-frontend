@@ -109,7 +109,10 @@ export default {
         submitForm(formName) {
             console.log(this.user)
             update(this.user).then(res => {
-                this.$message.success('信息修改成功')
+                this.$buefy.toast.open({
+                    message: '信息修改成功',
+                    type: 'is-success'
+                })
                 this.fetchInfo()
             })
         },
@@ -119,13 +122,19 @@ export default {
         beforeAvatarUpload(file) {
             const isImage = file.type.startsWith('image/'); // 验证是否为图片类型
             if (!isImage) {
-                this.$message.error('只能上传图片文件');
+                this.$buefy.toast.open({
+                    message: '只能上传图片文件',
+                    type: 'is-danger'
+                })
                 return false;
             }
 
             const isLt2M = file.size / 1024 / 1024 < 4; // 验证图片大小，此处限制为小于 4MB
             if (!isLt2M) {
-                this.$message.error('图片大小不能超过 4MB!');
+                this.$buefy.toast.open({
+                    message: '图片大小不能超过 4MB!',
+                    type: 'is-danger'
+                })
                 return false;
             }
 
@@ -141,19 +150,28 @@ export default {
                 const aspectRatio = img.width / img.height;
                 if (aspectRatio > 1.2) {
                     // 提示用户上传正方形图片
-                    this.$message.error('上传的图片过宽');
+                    this.$buefy.toast.open({
+                        message: '上传的图片过宽',
+                        type: 'is-danger'
+                    })
                     // 返回 false 阻止上传
                     return false;
                 }
                 else if ( (img.height / img.width)>1.2){
-                    this.$message.error('上传的图片过长');
+                    this.$buefy.toast.open({
+                        message: '上传的图片过长',
+                        type: 'is-danger'
+                    })
                     // 返回 false 阻止上传
                     return false;
                 }
                 // 返回 true 允许上传
                 this.user.avatar = imageUrl;
                 update(this.user);
-                this.$message.success('头像上传成功');
+                this.$buefy.toast.open({
+                    message: '头像上传成功',
+                    type: 'is-success'
+                })
                 return true;
             };
 
@@ -168,9 +186,15 @@ export default {
 
                 // 同时将新的头像链接保存到数据库中
                 update(this.user);
-                this.$message.success('头像上传成功');
+                this.$buefy.toast.open({
+                    message: '头像上传成功',
+                    type: 'is-success'
+                })
             } else {
-                this.$message.error('头像上传失败');
+                this.$buefy.toast.open({
+                    message: '头像上传失败',
+                    type: 'is-danger'
+                })
             }
         },
     }
