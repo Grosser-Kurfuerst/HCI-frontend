@@ -119,11 +119,11 @@ export default {
                         this.contentEditor.getValue() == null ||
                         this.contentEditor.getValue() === ''
                     ) {
-                        alert('文章内容不可为空')
+                        this.$message.error('文章内容不可为空');
                         return false
                     }
                     if (this.ruleForm.tags == null || this.ruleForm.tags.length === 0) {
-                        alert('文章标签不可为空')
+                        this.$message.error('文章标签不可为空');
                         return false
                     }
                     this.ruleForm.content = this.contentEditor.getValue()
