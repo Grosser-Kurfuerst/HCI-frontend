@@ -57,7 +57,7 @@ const routes = [
     name: 'search',
     path: '/search',
     component: () => import('@/views/Search'),
-    meta: { title: '检索' }
+    meta: { title: '搜索' }
   },
   // 用户主页
   {

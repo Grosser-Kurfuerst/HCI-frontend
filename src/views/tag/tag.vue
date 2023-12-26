@@ -3,7 +3,7 @@
     <div class="column is-three-quarters">
       <el-card class="box-card" shadow="never">
         <div slot="header" class="">
-          🔍 检索到 <span class="has-text-info">{{ topics.length }}</span> 篇有关
+          🔍 搜索到 <span class="has-text-info">{{ topics.length }}</span> 篇有关
           <span class="has-text-info">{{ this.$route.params.name }}</span>
           的文章
         </div>
