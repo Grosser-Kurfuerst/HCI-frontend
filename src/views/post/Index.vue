@@ -6,8 +6,8 @@
                     <el-tab-pane label="最新文章" name="latest">
                         <article v-for="(item, index) in articleList" :key="index" class="media">
                             <div class="media-left">
-                                <figure class="image is-58x58">
-                                    <img :src="`https://cdn.pixabay.com/photo/2021/11/12/03/04/woman-6787784_1280.png`"
+                                <figure class="image is-58x58" style="margin-top: 1rem">
+                                    <img :src="item.avatar"
                                          style="border-radius: 5px;width: 58px;height: 58px">
                                 </figure>
                             </div>
@@ -21,12 +21,15 @@
                                         </el-tooltip>
                                     </p>
                                 </div>
-                                <div v-if="articleContent[index]"
-                                     class="level has-text-grey is-mobile  is-size-6 mt-3"
-                                     style="-webkit-line-clamp:2;overflow:hidden;text-overflow: ellipsis;
+                                <router-link :to="{name:'post-detail',params:{id:item.id}}">
+                                    <div v-if="articleContent[index]"
+                                         class="level has-text-grey is-mobile  is-size-6 mt-3"
+                                         style="-webkit-line-clamp:2;overflow:hidden;text-overflow: ellipsis;
                                       width: 43rem;-webkit-box-orient: vertical; display: -webkit-box;
                                       margin-bottom: 1rem"
-                                >{{ articleContent[index] }}</div>
+                                    >{{ articleContent[index] }}</div>
+                                </router-link>
+
                                 <nav class="level has-text-grey is-mobile  is-size-7 mt-1">
                                     <div class="level-left">
                                         <router-link class="level-item"
