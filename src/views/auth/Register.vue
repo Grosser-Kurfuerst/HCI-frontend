@@ -119,16 +119,20 @@ export default {
             .then((value) => {
               const { code, message } = value
               if (code === 200) {
-                this.$message({
-                  message: '账号注册成功',
-                  type: 'success'
-                })
+                  this.$buefy.toast.open({
+                      message: '账号注册成功',
+                      type: 'is-success'
+                  })
+
                 setTimeout(() => {
                   this.loading = false
                   this.$router.push({ path: this.redirect || '/login' })
                 }, 0.1 * 1000)
               } else {
-                this.$message.error('注册失败，' + message)
+                  this.$buefy.toast.open({
+                      message: '注册失败，' + message,
+                      type: 'is-danger'
+                  })
               }
             })
             .catch(() => {

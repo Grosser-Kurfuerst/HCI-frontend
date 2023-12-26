@@ -33,7 +33,7 @@
               v-model="searchKey"
               class="s_input"
               width="80%"
-              placeholder="搜索帖子、标签和用户"
+              placeholder="搜索文章、标签和用户"
               rounded
               clearable
               @keyup.enter.native="search()"
@@ -43,7 +43,8 @@
               <b-button
                 class="is-info"
                 @click="search()"
-              >检索
+                style="background: #1770f2;border-bottom-right-radius:15px;border-top-right-radius: 15px"
+              >搜索
               </b-button>
             </p>
           </b-field>
@@ -151,7 +152,10 @@ export default {
   methods: {
     async logout() {
       this.$store.dispatch('user/logout').then(() => {
-        this.$message.info('退出登录成功')
+          this.$buefy.toast.open({
+              message: '成功退出登录',
+              type: 'is-success'
+          })
         setTimeout(() => {
           this.$router.push({ path: this.redirect || '/' })
         }, 500)
@@ -160,11 +164,10 @@ export default {
     search() {
       console.log(this.token)
       if (this.searchKey.trim() === null || this.searchKey.trim() === '') {
-        this.$message.info({
-          showClose: true,
-          message: '请输入关键字搜索！',
-          type: 'warning'
-        })
+          this.$buefy.toast.open({
+              message: '请输入关键字搜索！',
+              type: 'is-warning'
+          })
         return false
       }
       this.$router.push({ path: '/search?key=' + this.searchKey })

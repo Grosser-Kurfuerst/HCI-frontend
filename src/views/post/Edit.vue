@@ -74,7 +74,7 @@ export default {
                 preview: {
                     hljs: {style: "monokai"},
                 },
-                mode: "wysiwyg",
+                mode: "sv",
                 after: () => {
                     this.contentEditor.setValue(md);
                 },

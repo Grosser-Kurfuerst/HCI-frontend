@@ -116,7 +116,10 @@ export default {
         handleDelete(id) {
             deleteTopic(id).then(value => {
                 const {code, message} = value
-                alert(message)
+                this.$buefy.toast.open({
+                    message: '成功删除文章',
+                    type: 'is-success'
+                })
 
                 if (code === 200) {
                     setTimeout(() => {
