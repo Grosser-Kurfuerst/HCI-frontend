@@ -42,7 +42,7 @@
         <div>
           <ul>
             <li class="content">标签由平台用户发布使用</li>
-            <li class="content">系统每周会定时清理无用标签</li>
+            <li class="content">系统每周日23点定时清理无用标签</li>
           </ul>
         </div>
       </el-card>

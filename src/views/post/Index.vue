@@ -49,6 +49,10 @@
                                         <span class="is-hidden-mobile"
                                               style="padding-left: 10px"
                                         >浏览量:{{ item.view }}</span>
+                                        <span class="is-hidden-mobile"
+                                              style="padding-left: 10px"
+                                        >评论数:{{ item.comments}}</span>
+
 
                                     </div>
                                     <div class="level-right" style="margin-right: 0">
@@ -108,6 +112,9 @@
                                         <span class="is-hidden-mobile"
                                               style="padding-left: 10px"
                                         >浏览量:{{ item.view }}</span>
+                                        <span class="is-hidden-mobile"
+                                              style="padding-left: 10px"
+                                        >评论数:{{ item.comments}}</span>
 
                                     </div>
                                     <div class="level-right" style="margin-right: 0">
