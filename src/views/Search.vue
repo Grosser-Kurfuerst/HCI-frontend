@@ -2,7 +2,7 @@
   <div>
     <el-card shadow="never">
       <div slot="header" class="clearfix">
-        检索到 <code>{{ list.length }}</code>
+        搜索到 <code>{{ list.length }}</code>
         条关于 <code class="has-text-info">{{ query.keyword }}</code> 的记录
       </div>
       <div>
