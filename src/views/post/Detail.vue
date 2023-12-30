@@ -41,16 +41,42 @@
                             </b-taglist>
                         </p>
                     </div>
-                    <div v-if="token && user.id === topicUser.id" class="level-right">
-                        <router-link class="level-item"
-                                     :to="{name:'topic-edit',params: {id:topic.id}}">
-                            <b-button label="编辑" type="is-info" size="is-small" style="border-radius: 20px;background-color: #2282ff"/>
-                        </router-link>
-                        <a class="level-item">
-                            <b-button label="删除" type="is-danger" size="is-small" style="border-radius: 20px;background-color: #ff5476"
-                                      @click="confirmCustomDelete(topic.id)"/>
-                        </a>
+                </nav>
+                <nav class="level has-text-grey is-size-7 ">
+                    <div  class="level-right">
+                        <b-button
+                            v-if="hasCollect"
+                            class="button is-success button-center is-fullwidth"
+                            size="is-small"
+                            style="background: #ffcd68;color: #000000;border-color:#ffa100;border-radius: 20px;"
+                            @click="handleUnCollect"
+                        >
+                            ⭐ 已收藏
+                        </b-button>
+
+                        <b-button v-else class="button is-link button-center is-fullwidth"
+                                size="is-small"
+                                style="border-radius: 20px;background-color: #e3e3e3;color:#000000;border-color: #949494"
+                                @click="handleCollect">
+                            ☆ 收藏
+                        </b-button>
                     </div>
+                    <div class="level-right">
+                        <div v-if="token && user.id === topicUser.id" class="level-right">
+                            <router-link class="level-item"
+                                         :to="{name:'topic-edit',params: {id:topic.id}}">
+                                <b-button label="编辑" type="is-info" size="is-small"
+                                          style="border-radius: 20px;background-color: #2282ff;border-color:#0a75ff"/>
+                            </router-link>
+                            <a class="level-item">
+                                <b-button label="删除" type="is-danger" size="is-small"
+                                          style="border-radius: 20px;background-color: #ff5476;border-color:#ff2f57"
+                                          @click="confirmCustomDelete(topic.id)"/>
+                            </a>
+                        </div>
+                    </div>
+
+
                 </nav>
             </el-card>
 
@@ -80,6 +106,7 @@ import Recommend from '@/views/post/Recommend'
 import LvComments from '@/components/Comment/Comments'
 import Vditor from 'vditor'
 import 'vditor/dist/index.css'
+import {addCollectTopic, deleteCollectTopic, getCollectTopicsId} from "@/api/user";
 
 export default {
     name: 'TopicDetail',
@@ -92,6 +119,7 @@ export default {
     data() {
         return {
             flag: false,
+            hasCollect:false,
             topic: {
                 content: '',
                 id: this.$route.params.id
@@ -121,6 +149,15 @@ export default {
                 // this.comments = data.comments
                 this.renderMarkdown(this.topic.content)
                 this.flag = true
+                getCollectTopicsId(this.user.username).then(response=>{
+                    const {data} = response
+                    for (let i = 0; i < data.topicsId.length; i++) {
+                        if (this.topic.id ===data.topicsId[i] ){
+                            this.hasCollect = true
+                        }
+                    }
+
+                })
             })
         },
         handleDelete(id) {
@@ -146,6 +183,35 @@ export default {
                 type: 'is-danger',
                 hasIcon: true,
                 onConfirm: () => this.handleDelete(id),
+            })
+        },
+        handleCollect: function () {
+            if (this.token != null && this.token !== '') {
+                addCollectTopic(this.user.id,this.topic.id).then(response => {
+                    this.$buefy.toast.open({
+                        message: "收藏成功",
+                        type: 'is-success'
+                    })
+                    this.hasCollect = true
+                    this.fetchTopic();
+                })
+            } else {
+                this.$buefy.toast.open({
+                    message: '请先登录',
+                    type: 'is-warning'
+                })
+            }
+        },
+        handleUnCollect: function () {
+            deleteCollectTopic(this.user.id,this.topic.id).then(response => {
+
+                this.$buefy.toast.open({
+                    message: "取消收藏成功",
+                    type: 'is-success'
+                })
+
+                this.hasCollect = false
+                this.fetchTopic();
             })
         }
     }
