@@ -8,15 +8,15 @@
                 <div class="column is-full">
                     <el-tabs v-model="activeName" @tab-click="handleClick">
                         <el-tab-pane label="基础信息" name="first">
-                            <el-form :label-position="labelPosition" label-width="100px" :model="user">
+                            <el-form :label-position="labelPosition" label-width="200px" :model="user">
                                 <el-form-item label="账号">
-                                    <el-input v-model="user.username" disabled/>
+                                    <el-input v-model="user.username" style="width: 500px;"disabled/>
                                 </el-form-item>
                                 <el-form-item label="昵称">
-                                    <el-input v-model="user.alias"/>
+                                    <el-input v-model="user.alias" style="width: 500px;"/>
                                 </el-form-item>
                                 <el-form-item label="简介">
-                                    <el-input v-model="user.bio"/>
+                                    <el-input v-model="user.bio" style="width: 500px;"/>
                                 </el-form-item>
                                 <el-form-item>
                                     <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
@@ -27,10 +27,9 @@
 
                         <el-tab-pane label="头像" name="second">
 
-                            <figure class="image is-48x48" style="border-radius: 20px;border-color: #1d1d1d;border-width: 5px">
-                                <img
-
-                                        :src="user.avatar || 'https://cdn.pixabay.com/photo/2021/11/12/03/04/woman-6787784_1280.png'"
+                            <figure class="image is-128*128"  style="marginborder-radius: 20px;border-color: #1d1d1d;border-width: 5px" >
+                                <img :src="user.avatar || 'https://cdn.pixabay.com/photo/2021/11/12/03/04/woman-6787784_1280.png'"
+                               style="width:128px; height: 128px; border-radius: 10px; "
                                 >
                             </figure>
                             <div class="level has-text-grey is-mobile  is-size-6 mt-3"
@@ -46,7 +45,7 @@
                         </el-tab-pane>
 
                         <el-tab-pane label="电子邮箱" name="third">
-                            <el-form ref="dynamicValidateForm" :model="user" label-width="100px" class="demo-dynamic">
+                            <el-form ref="dynamicValidateForm" :model="user" label-width="200px" class="demo-dynamic">
                                 <el-form-item
                                         prop="email"
                                         label="邮箱"
@@ -55,7 +54,7 @@
                     { type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }
                   ]"
                                 >
-                                    <el-input v-model="user.email"/>
+                                    <el-input v-model="user.email" style="width: 500px;"/>
                                 </el-form-item>
 
                                 <el-form-item>

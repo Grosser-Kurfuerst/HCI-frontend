@@ -16,7 +16,7 @@
             class="demo-ruleForm"
           >
             <el-form-item label="账号" prop="name">
-              <el-input v-model="ruleForm.name" />
+              <el-input v-model="ruleForm.name" style="width: 250px;"/>
             </el-form-item>
 
             <el-form-item label="密码" prop="pass">
@@ -24,6 +24,7 @@
                 v-model="ruleForm.pass"
                 type="password"
                 autocomplete="off"
+                style="width: 250px;"
               />
             </el-form-item>
 
@@ -32,11 +33,12 @@
                 v-model="ruleForm.checkPass"
                 type="password"
                 autocomplete="off"
+                style="width: 250px;"
               />
             </el-form-item>
 
             <el-form-item label="邮箱" prop="email">
-              <el-input v-model="ruleForm.email" autocomplete="off" />
+              <el-input v-model="ruleForm.email" autocomplete="off" style="width: 250px;"/>
             </el-form-item>
 
             <el-form-item>
