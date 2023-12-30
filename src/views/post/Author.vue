@@ -4,39 +4,48 @@
             <div slot="header">
                 <span class="has-text-weight-bold">👨‍💻 关于作者</span>
             </div>
-            <div class="has-text-centered">
-                <p class="is-size-5 mb-5">
-                    <router-link :to="{ path: `/member/${user.username}/home` }">
-                        {{ user.alias }} <span class="is-size-7 has-text-grey">{{ '@' + user.username }}</span>
-                    </router-link>
-                </p>
-                <div class="columns is-mobile">
-                    <div class="column is-half">
-                        <code>{{ user.topicCount }}</code>
-                        <p>文章</p>
+            <div style="display:flex;flex-direction: column;align-items: center;justify-content: space-between">
+                <figure class="image is-58x58 "  >
+                    <img :src="user.avatar"
+                         style="border-radius: 5px;width: 58px;height: 58px">
+                </figure>
+
+                <div class="has-text-centered">
+                    <p class="is-size-5 mt-3 mb-3">
+                        <router-link :to="{ path: `/member/${user.username}/home` }">
+                            {{ user.alias }} <span class="is-size-7 has-text-grey">{{ '@' + user.username }}</span>
+                        </router-link>
+                    </p>
+                    <div class="columns is-mobile">
+                        <div class="column is-half">
+                            <code><b>{{ user.topicCount }}</b></code>
+                            <p>文章</p>
+                        </div>
+                        <div class="column is-half">
+                            <code><b>{{ user.followerCount }}</b></code>
+                            <p>粉丝</p>
+                        </div>
                     </div>
-                    <div class="column is-half">
-                        <code>{{ user.followerCount }}</code>
-                        <p>粉丝</p>
-                    </div>
-                </div>
-                <div>
-                    <button
+                    <div>
+                        <button
                             v-if="hasFollow"
                             class="button is-success button-center is-fullwidth"
                             style="background: #e1e3e5;color: #93989f"
                             @click="handleUnFollow(user.id)"
 
-                    >
-                        已关注
-                    </button>
+                        >
+                            已关注
+                        </button>
 
-                    <button v-else class="button is-link button-center is-fullwidth"
-                            style="border-radius: 5px;background-color: #1e7ffd"
-                            @click="handleFollow(user.id)">
-                        关注
-                    </button>
+                        <button v-else class="button is-link button-center is-fullwidth"
+                                style="border-radius: 5px;background-color: #1e7ffd"
+                                @click="handleFollow(user.id)">
+                            关注
+                        </button>
+                    </div>
                 </div>
+
+
             </div>
         </el-card>
     </section>
