@@ -6,7 +6,7 @@
         <div class="media-content">
             <div class="content">
                 <p>
-                    <strong>{{ comment.username }}</strong>
+                    <strong>{{ user_n }}</strong>
                     <small class="ml-2">{{ comment.createTime | date }}</small>
                     <br/>
                 </p>
@@ -19,7 +19,8 @@
                     <div class="level-right">
                         <div v-if="token && user.id === comment.userId" class="level-right">
                             <a class="level-item">
-                                <b-button label="删除" type="is-danger" size="is-small" style="border-radius: 20px;background-color: #ff5476"
+                                <b-button label="删除" type="is-danger" size="is-small"
+                                          style="border-radius: 20px;background-color: #ff5476;border-color:#ff2f57"
                                           @click="confirmCustomDelete(comment.id)"/>
                             </a>
                         </div>
@@ -49,6 +50,7 @@ export default {
     data() {
         return {
             user_avatar:'',
+            user_n:''
         }
     },
     props: {
@@ -65,6 +67,7 @@ export default {
             getInfoByName(this.comment.username,0,0).then(res => {
                 const {data} = res
                 this.user_avatar = data.user.avatar
+                this.user_n = data.user.alias
             })
         },
         handleDelete(id) {
