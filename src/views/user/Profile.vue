@@ -49,11 +49,11 @@
                                 <div v-if="topicUser.username === user.username" class="level">
                                     <div class="level-item mr-1">
                                         <router-link :to="{name:'topic-edit',params: {id:item.id}}">
-                                            <b-button label="编辑" type="is-info" size="is-small"/>
+                                            <b-button label="编辑" type="is-info" size="is-small" style="border-radius:20px;background-color: #2282ff"/>
                                         </router-link>
                                     </div>
                                     <div class="level-item">
-                                        <b-button label="删除" type="is-danger" size="is-small"
+                                        <b-button label="删除" type="is-danger" size="is-small"  style="border-radius: 20px;background-color: #ff5476"
                                                   @click="confirmCustomDelete(item.id)"/>
                                     </div>
                                 </div>
