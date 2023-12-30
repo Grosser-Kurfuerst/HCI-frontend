@@ -9,6 +9,8 @@
                         <p class="mt-3">{{ topicUser.alias || topicUser.username }}</p>
                     </div>
                     <div>
+                        <p class="content">关注：<code>{{ followCount }}</code></p>
+                        <p class="content">粉丝：<code>{{ followerCount }}</code></p>
                         <p class="content">积分：<code>{{ topicUser.score }}</code></p>
                         <p class="content">入驻：{{ dayjs(topicUser.createTime).format("YYYY/MM/DD HH:MM:ss") }}</p>
                         <p class="content">简介：{{ topicUser.bio }}</p>
@@ -93,7 +95,9 @@ export default {
                 current: 1,
                 size: 5,
                 total: 0
-            }
+            },
+          followCount: 0,
+          followerCount: 0,
         }
     },
     computed: {
@@ -111,6 +115,8 @@ export default {
                 this.page.size = data.topics.size
                 this.page.total = data.topics.total
                 this.topics = data.topics.records
+                this.followerCount = data.followerCount; // 获取粉丝数
+                this.followCount = data.followCount; // 获取关注数
             })
         },
         handleDelete(id) {
@@ -138,7 +144,7 @@ export default {
                 hasIcon: true,
                 onConfirm: () => this.handleDelete(id),
             })
-        }
+        },
     }
 }
 </script>
