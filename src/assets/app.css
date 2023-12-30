@@ -95,7 +95,7 @@ a:hover {
 /*统一卡片样式*/
 .el-card {
   border-radius: 15px !important;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   box-shadow: 0 0.4em 1em -0.1em rgba(10, 10, 10, 0.1),
   0 0 0 1px rgba(10, 10, 10, 0.02);
   /*border: none;*/
