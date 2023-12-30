@@ -18,6 +18,8 @@ export function getInfo() {
     method: 'get'
   })
 }
+
+
 // 更新
 export function update(user) {
   return request({
