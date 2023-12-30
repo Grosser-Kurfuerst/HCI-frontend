@@ -18,3 +18,9 @@ export function pushComment(data) {
   })
 }
 
+export function deleteComment(id) {
+  return request({
+    url: `/comment/delete_comment/${id}`,
+    method: 'delete'
+  })
+}
