@@ -36,16 +36,35 @@ export default {
     name: 'LvCommentsForm',
     data() {
         return {
-            commentText: '',
-            isLoading: false
+          commentText: '',
+          isLoading: false,
+          localReplyInfo: null // 添加 localReplyInfo 属性
         }
     },
     props: {
         slug: {
             type: String,
             default: null
+        },
+        replyInfo: {
+            type: Object,
+            default: null
         }
     },
+  watch: {
+    replyInfo: {
+      handler(newReplyInfo) {
+        if (newReplyInfo) {
+          this.commentText = `回复 @${newReplyInfo.username}: `
+          this.localReplyInfo = newReplyInfo // 更新 localReplyInfo 值
+        } else {
+          this.commentText = ''
+          this.localReplyInfo = null // 清空 localReplyInfo 值
+        }
+      },
+      immediate: true
+    }
+  },
     methods: {
         async onSubmit() {
             this.isLoading = true
@@ -59,12 +78,12 @@ export default {
                 }
 
                 let postData = {}
+                console.log(this.replyInfo)
                 console.log(this.commentText)
                 postData['content'] = this.commentText
                 postData['topic_id'] = this.slug
-
                 this.commentText = ''; // 清空输入框内容
-
+                this.localReplyInfo = null; // 清空 localReplyInfo 值
                 await pushComment(postData)
                 this.$emit('loadComments', this.slug)
                 this.$buefy.toast.open({
