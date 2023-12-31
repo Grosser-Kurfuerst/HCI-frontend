@@ -24,6 +24,11 @@
                                           @click="confirmCustomDelete(comment.id)"/>
                             </a>
                         </div>
+                      <div class="level-right">
+                        <a class="level-item" @click="replyComment(comment)">
+                          <b-button label="回复" type="is-primary" size="is-small" style="border-radius: 20px;margin-right: 10px"/>
+                        </a>
+                      </div>
                     </div>
                 </div>
 
@@ -95,7 +100,10 @@ export default {
                 hasIcon: true,
                 onConfirm: () => this.handleDelete(id),
             })
-        }
+        },
+      replyComment(comment) {
+        this.$emit('replyComment', this.comment);
+      }
     }
 }
 </script>
