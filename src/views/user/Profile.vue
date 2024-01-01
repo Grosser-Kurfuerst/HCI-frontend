@@ -100,7 +100,7 @@
                                                     <b-button
                                                         class="button is-success button-center is-fullwidth"
                                                         size="is-small"
-                                                        style="background: #ffcd68;color: #000000;border-color:#ffa100;border-radius: 20px;"
+                                                        style="background: #ffcd68;color: #000000;border-color:#ffbd54;border-radius: 20px;"
                                                         @click="handleUnCollect(item.id)"
                                                     >
                                                         ⭐ 已收藏

@@ -11,7 +11,7 @@
                         <img
                                 width="275px"
                                 height="275px"
-                                src="@/assets/image/bg1.png">
+                                src="@/assets/image/bg5.png">
                     </div>
 
                     <div style="display: flex;justify-content: left;margin-left:0px;margin-top: 50px;">

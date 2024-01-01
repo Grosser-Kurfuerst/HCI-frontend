@@ -48,7 +48,7 @@
                             v-if="hasCollect"
                             class="button is-success button-center is-fullwidth"
                             size="is-small"
-                            style="background: #ffcd68;color: #000000;border-color:#ffa100;border-radius: 20px;"
+                            style="background: #ffcd68;color: #000000;border-color:#ffbd54;border-radius: 20px;"
                             @click="handleUnCollect"
                         >
                             ⭐ 已收藏
@@ -56,7 +56,7 @@
 
                         <b-button v-else class="button is-link button-center is-fullwidth"
                                 size="is-small"
-                                style="border-radius: 20px;background-color: #e3e3e3;color:#000000;border-color: #949494"
+                                style="border-radius: 20px;background-color: #e3e3e3;color:#000000;border-color: #eee9e9"
                                 @click="handleCollect">
                             ☆ 收藏
                         </b-button>
