@@ -12,7 +12,7 @@
                         <p class="content">关注：<code>{{ followCount }}</code></p>
                         <p class="content">粉丝：<code>{{ followerCount }}</code></p>
                         <p class="content">积分：<code>{{ topicUser.score }}</code></p>
-                        <p class="content">入驻：{{ dayjs(topicUser.createTime).format("YYYY/MM/DD HH:MM:ss") }}</p>
+                        <p class="content">入驻：{{ dayjs(topicUser.createTime).format("YYYY/MM/DD") }}</p>
                         <p class="content">简介：{{ topicUser.bio }}</p>
                     </div>
                 </el-card>
