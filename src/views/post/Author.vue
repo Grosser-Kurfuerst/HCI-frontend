@@ -5,10 +5,8 @@
                 <span class="has-text-weight-bold">👨‍💻 关于作者</span>
             </div>
             <div style="display:flex;flex-direction: column;align-items: center;justify-content: space-between">
-                <figure class="image is-58x58 "  >
-                    <img :src="user.avatar"
-                         style="border-radius: 5px;width: 58px;height: 58px">
-                </figure>
+                <el-avatar :size="64"
+                           :src="user.avatar"/>
 
                 <div class="has-text-centered">
                     <p class="is-size-5 mt-3 mb-3">

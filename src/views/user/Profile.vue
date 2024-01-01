@@ -12,7 +12,7 @@
                         <p class="content">关注：<code>{{ followCount }}</code></p>
                         <p class="content">粉丝：<code>{{ followerCount }}</code></p>
                         <p class="content">积分：<code>{{ topicUser.score }}</code></p>
-                        <p class="content">入驻：{{ dayjs(topicUser.createTime).format("YYYY/MM/DD HH:MM:ss") }}</p>
+                        <p class="content">入驻：{{ dayjs(topicUser.createTime).format("YYYY/MM/DD") }}</p>
                         <p class="content">简介：{{ topicUser.bio }}</p>
                     </div>
                 </el-card>
@@ -100,7 +100,7 @@
                                                     <b-button
                                                         class="button is-success button-center is-fullwidth"
                                                         size="is-small"
-                                                        style="background: #ffcd68;color: #000000;border-color:#ffa100;border-radius: 20px;"
+                                                        style="background: #ffcd68;color: #000000;border-color:#ffbd54;border-radius: 20px;"
                                                         @click="handleUnCollect(item.id)"
                                                     >
                                                         ⭐ 已收藏
