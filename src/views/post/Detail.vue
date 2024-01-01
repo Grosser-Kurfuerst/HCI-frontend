@@ -149,15 +149,17 @@ export default {
                 // this.comments = data.comments
                 this.renderMarkdown(this.topic.content)
                 this.flag = true
-                getCollectTopicsId(this.user.username).then(response=>{
-                    const {data} = response
-                    for (let i = 0; i < data.topicsId.length; i++) {
-                        if (this.topic.id ===data.topicsId[i] ){
-                            this.hasCollect = true
+                if (this.user.username!=null){
+                    getCollectTopicsId(this.user.username).then(response=>{
+                        const {data} = response
+                        for (let i = 0; i < data.topicsId.length; i++) {
+                            if (this.topic.id ===data.topicsId[i] ){
+                                this.hasCollect = true
+                            }
                         }
-                    }
 
-                })
+                    })
+                }
             })
         },
         handleDelete(id) {
