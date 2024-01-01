@@ -10,25 +10,29 @@
                     <small class="ml-2">{{ comment.createTime | date }}</small>
                     <br/>
                 </p>
-                <div class="level">
-                    <div class="level-left" style="width: 40rem">
+                <div class="level" style="justify-content: left">
+                    <div class="level-left" style="width: 38rem">
                         <div style="white-space:normal; word-break:break-all">
                             {{ comment.content }}
                         </div>
                     </div>
-                    <div class="level-right">
-                        <div v-if="token && user.id === comment.userId" class="level-right">
-                            <a class="level-item">
-                                <b-button label="删除" type="is-danger" size="is-small"
-                                          style="border-radius: 20px;background-color: #ff5476;border-color:#ff2f57"
-                                          @click="confirmCustomDelete(comment.id)"/>
+                    <div class="level-right" >
+                        <div class="level-item">
+                            <a @click="replyComment(comment)" >
+                                <b-button label="回复" type="is-info" size="is-small"
+                                          style="border-radius: 20px"/>
                             </a>
                         </div>
-                      <div class="level-right">
-                        <a class="level-item" @click="replyComment(comment)">
-                          <b-button label="回复" type="is-primary" size="is-small" style="border-radius: 20px;margin-right: 10px"/>
-                        </a>
-                      </div>
+                        <div class="level-item" >
+                            <div v-if="token && user.id === comment.userId" >
+                                <a class="level-item">
+                                    <b-button label="删除" type="is-danger" size="is-small"
+                                              style="border-radius: 20px;background-color: #ff5476;border-color:#ff2f57"
+                                              @click="confirmCustomDelete(comment.id)"/>
+                                </a>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
