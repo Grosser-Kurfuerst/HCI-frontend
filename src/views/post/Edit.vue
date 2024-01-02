@@ -99,6 +99,10 @@ export default {
                     });
                 }, 800);
             });
+            this.$buefy.toast.open({
+                message: '成功更新文章',
+                type: 'is-success'
+            })
         },
 
         resetForm(formName) {

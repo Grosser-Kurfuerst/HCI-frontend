@@ -11,13 +11,13 @@
                         slot="header"
                         class="has-text-centered"
                 >
-                    <p class="is-size-5 has-text-weight-bold">{{ topic.title }}</p>
+                    <p class="is-size-3 has-text-weight-bold">{{ topic.title }}</p>
                     <div class="has-text-grey is-size-7 mt-3">
                         <span>{{ dayjs(topic.createTime).format('YYYY/MM/DD HH:mm:ss') }}</span>
                         <el-divider direction="vertical"/>
                         <span>发布者：{{ topicUser.alias }}</span>
                         <el-divider direction="vertical"/>
-                        <span>查看：{{ topic.view }}</span>
+                        <span>浏览量：{{ topic.view }}</span>
                     </div>
                 </div>
 

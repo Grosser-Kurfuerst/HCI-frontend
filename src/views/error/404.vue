@@ -2,9 +2,12 @@
   <div class="columns mt-6">
     <div class="column mt-6">
       <div class="mt-6">
-        <p class="content">UH OH! 页面丢失</p>
+          <img
+              width="275px"
+              height="275px"
+              src="@/assets/image/404-dark.png">
         <p class="content subtitle mt-6">
-          您所寻找的页面不存在， {{ times }} 秒后，将返回首页!
+          您所寻找的页面似乎不存在， {{ times }} 秒后，将返回首页
         </p>
       </div>
     </div>

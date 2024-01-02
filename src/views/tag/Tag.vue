@@ -23,7 +23,7 @@
                             <router-link :to="{name:'post-detail',params:{id:item.id}}">
                                 <div v-if="articleContent[index]"
                                      class="level has-text-grey is-mobile  is-size-6 mt-3"
-                                     style="-webkit-line-clamp:2;overflow:hidden;text-overflow: ellipsis;
+                                     style="-webkit-line-clamp:1;overflow:hidden;text-overflow: ellipsis;
                                       width: 47rem;-webkit-box-orient: vertical; display: -webkit-box;
                                       margin-bottom: 1rem;padding-left: 10px"
                                 >{{ articleContent[index] }}</div>
